@@ -1,0 +1,214 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Smart Watch Showcase</title>
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  </head>
+
+  <body id="main-body">
+<style>
+.colors{
+  width:50px;
+  height:40px;
+  margin-right:20px;  
+  padding:10px;
+  border:solid;
+  border-radius:5px;
+}
+body{
+  margin:0;
+}
+h1{
+  margin-top:40px;
+}
+#image{
+  width:250px;
+  height:50px;
+  margin-top:10px;
+  margin-left:40%;
+  text-align:center;
+}
+h2{
+  margin-top:40px;
+}
+#topbar{
+  background-color:#301934;
+  height:80px;
+}
+h1,#para,h2,#buttons,#boxses,#buy{
+  margin-left:0px;
+}
+button{
+  padding: 15px;
+  margin-right:12px;
+  border-radius:12px;
+  outline:none;
+  cursor:pointer; 
+}
+img{
+  width:500px;
+}
+#colorbox1{
+  background-color:#ca3d22;
+  border-color:#ca3d22;
+}
+#colorbox2{
+  background-color:#23211f;
+  border-color:#23211f;
+}
+#colorbox3{
+  background-color:#565681;
+  border-color:#565681;
+}
+#colorbox4{
+  background-color:#8a5362;
+  border-color:#8a5362;
+}
+#colorbox5{
+  background-color:#e9c7be;
+  border-color:#e9c7be;
+}
+#buy>button{
+  background-color:orange;
+  cursor:pointer;
+  margin-top:24px;
+}
+#heartbeat>i{
+  color: red;
+  transform: scale(4);
+}
+section {
+  display: flex;
+  flex-direction: row;
+}
+#heartbeat {
+  display: none;
+  position: absolute;
+  font-size: 30px;
+  top: 300px;
+  left: 250px;
+  transform: translateX(-50%);
+  color: white;
+  z-index: 1; 
+  text-align: center;
+}
+#heartbeat>p{
+  padding:15px;
+  position:sticky;
+}
+#timeval{
+  position: absolute;
+  font-size: 30px;
+  top: 280px;
+  left: 250px;
+  transform: translateX(-50%);
+  color: white;
+  z-index: 1; 
+  text-align: center;
+}
+#heartbeat>i:hover{
+  transform:scale(1.3,1.3);
+}
+</style>
+<script>
+// declaring variables
+var black=document.getElementById('colorbox2');
+var red=document.getElementById("colorbox1");
+var blue=document.getElementById("colorbox3");
+var purple=document.getElementById("colorbox4");
+var pink=document.getElementById("colorbox5");
+var image1 = document.getElementById('image1');
+var heartbeat=document.getElementById('heartbeat');
+var heart=document.getElementById("beat");
+var time = document.getElementById("time");
+var timeval = document.getElementById("timeval");
+
+// changing color of the watch 
+black.addEventListener('click', function(){
+  image1.src="https://i.imgur.com/iOeUBV7.png";
+});
+red.addEventListener('click', function(){
+  image1.src="https://i.imgur.com/PTgQlim.png";
+});
+blue.addEventListener('click', function(){
+  image1.src="https://i.imgur.com/Mplj1YR.png";
+});
+purple.addEventListener('click', function(){
+  image1.src=" https://i.imgur.com/xSIK4M8.png";
+});
+pink.addEventListener('click', function(){
+  image1.src="https://i.imgur.com/Zygu7I3.png";
+});
+// displaying heart when heart rate is clicked
+time.addEventListener('click', function(){
+  heartbeat.style.display = "none";
+  timeval.style.display = "block";
+
+});
+heart.addEventListener('click', function(){
+  timeval.style.display = "none";
+  heartbeat.style.display = "block";
+  heartbeat.style.transform=scale(1.3,1.3);
+});
+setInterval(function(){
+  if( timeval.innerHTML.slice(-2)=='59' ){
+    var str = timeval.innerHTML.split('');
+    str[6] = '0';
+    str[7] = '0';
+    timeval.innerHTML = str.join('');
+    timeval.innerHTML = timeval.innerHTML.slice(0,3) + (parseInt(timeval.innerHTML.slice(3,5)) + 1) + timeval.innerHTML.slice(-3);
+  }
+  if(timeval.innerHTML.slice(7)=='9'){
+    var str = timeval.innerHTML.split('');
+    str[7] = '0';
+    str[6] = parseInt(str[6]) + 1;
+    timeval.innerHTML = str.join('');
+  }
+  if(timeval.innerHTML.slice(-2)!='59' && timeval.innerHTML.slice(-1)!='9') {
+    timeval.innerHTML = timeval.innerHTML.slice(0,-1) + (parseInt(timeval.innerHTML.slice(-1)) + 1);
+  }
+},1000);
+
+
+</script>
+    <div id="topbar">
+<!--    <img id="image" src="http://pluspng.com/img-png/amazon-logo-vector-png-amazon-logo-vector-512.png"/> -->
+   <img id="image"  src="https://allogos.net/downloader/get?link=aHR0cDovL3BuZ2ltZy5jb20vdXBsb2Fkcy9hbWF6b24vYW1hem9uX1BORzI1LnBuZw%3D%3D"/>
+    </div>
+    <section>
+      <img id="image1" src="https://i.imgur.com/PTgQlim.png"/>
+      <p id="timeval">22:49:00</p>
+      <div id="heartbeat">
+        <i class="fas fa-heartbeat"></i>
+        <p>78</p>
+      </div>
+      <header>
+        <h1>FitBit 19 - The Smartest Watch</h1>
+        <pre id="para">Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+Lorem ipsum dolor Lorem ipsum dolor</pre>
+        <h2>Select Color</h2>
+        <div id="boxses">
+          <button class="colors" id="colorbox1"></button>
+          <button class="colors" id="colorbox2"></button>
+          <button class="colors" id="colorbox3"></button>
+          <button class="colors" id="colorbox4"></button>
+          <button class="colors" id="colorbox5"></button>
+        </div>
+        <h2>Features</h2>
+        <div id="buttons">
+          <button id="time">Time</button>
+          <button id="beat">Heart Rate</button>
+        </div>
+        <div id="buy">
+          <button>BUY NOW</button>
+        </div>
+      </header>
+    </section>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
